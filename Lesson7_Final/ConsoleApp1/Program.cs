@@ -6,17 +6,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
     abstract class Delivery
     {
-        public string Address;
+        public string Address { get; set; }
     }
 
     class HomeDelivery : Delivery
     {
-        /* ... */
+        private string address;
+        public DateTime DeliveryTime;
+        public string Address { get { return address; } set { address = value; } }
+        public HomeDelivery(string address, DateTime deliveryTime): base(address){DeliveryTime= deliveryTime);
     }
 
     class PickPointDelivery : Delivery
@@ -29,8 +32,7 @@ namespace ConsoleApp1
         /* ... */
     }
 
-    class Order<TDelivery,
-    TStruct> where TDelivery : Delivery
+    class Order<TDelivery,TStruct> where TDelivery : Delivery
     {
         public TDelivery Delivery;
 
