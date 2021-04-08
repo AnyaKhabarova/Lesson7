@@ -11,15 +11,22 @@ namespace ConsoleApp1
     }
     abstract class Delivery
     {
-        public string Address { get; set; }
+        public string Address;
+        public Delivery(string address)
+        {
+            Address = address;
+        }
+
+        public void DisplayAddress()
+        {
+            Console.WriteLine(Address);
+        }
     }
 
     class HomeDelivery : Delivery
     {
-        private string address;
         public DateTime DeliveryTime;
-        public string Address { get { return address; } set { address = value; } }
-        public HomeDelivery(string address, DateTime deliveryTime): base(address){DeliveryTime= deliveryTime);
+        public HomeDelivery(string address, DateTime deliveryTime): base(address) { DeliveryTime = deliveryTime; }
     }
 
     class PickPointDelivery : Delivery
